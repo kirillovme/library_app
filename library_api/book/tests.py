@@ -1,9 +1,9 @@
 import pytest
-from rest_framework.test import APIClient
-from rest_framework import status
-from book.models import Book
 from author.models import Author
+from book.models import Book
 from genre.models import Genre
+from rest_framework import status
+from rest_framework.test import APIClient
 
 BOOK_URL = '/api/books/'
 

@@ -1,5 +1,5 @@
-from rest_framework import serializers
 from author.models import Author
+from rest_framework import serializers
 
 
 class AuthorSerializer(serializers.ModelSerializer):
@@ -13,5 +13,5 @@ class AuthorSerializer(serializers.ModelSerializer):
         """Validate the name of the author."""
         words = value.split()
         if not all(word.isalpha() for word in words):
-            raise serializers.ValidationError("Name should only contain alphabetic characters.")
+            raise serializers.ValidationError('Name should only contain alphabetic characters.')
         return value

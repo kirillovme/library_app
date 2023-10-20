@@ -1,7 +1,7 @@
 import pytest
-from rest_framework.test import APIClient
-from rest_framework import status
 from genre.models import Genre
+from rest_framework import status
+from rest_framework.test import APIClient
 
 GENRE_URL = '/api/genres/'
 

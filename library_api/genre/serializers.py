@@ -1,5 +1,5 @@
-from rest_framework import serializers
 from genre.models import Genre
+from rest_framework import serializers
 
 
 class GenreSerializer(serializers.ModelSerializer):
@@ -13,5 +13,5 @@ class GenreSerializer(serializers.ModelSerializer):
         """Validate the name of the genre."""
         words = value.split()
         if not all(word.isalpha() for word in words):
-            raise serializers.ValidationError("Genre name should only contain alphabetic characters.")
+            raise serializers.ValidationError('Genre name should only contain alphabetic characters.')
         return value

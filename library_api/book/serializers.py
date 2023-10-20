@@ -1,8 +1,7 @@
-from rest_framework import serializers
-
 from author.serializers import AuthorSerializer
 from book.models import Book
 from genre.serializers import GenreSerializer
+from rest_framework import serializers
 
 
 class BookSerializer(serializers.ModelSerializer):
@@ -16,7 +15,7 @@ class BookSerializer(serializers.ModelSerializer):
         """Validate the title of the book."""
         words = value.split()
         if not all(word.isalpha() for word in words):
-            raise serializers.ValidationError("Title should only contain alphabetic characters.")
+            raise serializers.ValidationError('Title should only contain alphabetic characters.')
         return value
 
     def to_representation(self, instance: Book):
