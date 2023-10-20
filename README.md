@@ -19,7 +19,7 @@ Library App is a Django-based application for managing books, authors, and genre
 ### Instructions:
 1. Clone the repository
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/kirillovme/library_app.git
    ``` 
 2. Start the containers
    ```bash
