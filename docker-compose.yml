@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: ./library_api/Dockerfile
+    restart: always
+    container_name: web
+    command: ["./entrypoint.sh"]
+    volumes:
+      - library_api_static_value:/app/web-static/
+      - library_api_media_value:/app/web-media/
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+
+  db:
+    image: postgres:15-alpine
+    restart: always
+    container_name: db
+    ports:
+      - "5432:5432"
+    volumes:
+      - library_api_pgdata:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 30s
+      retries: 5
+      start_period: 80s
+
+volumes:
+  library_api_pgdata:
+    name: library_api_pgdata
+  library_api_static_value:
+    name: library_api_static_value
+  library_api_media_value:
+    name: library_api_media_value
