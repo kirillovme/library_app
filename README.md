@@ -30,9 +30,9 @@ Library App is a Django-based application for managing books, authors, and genre
    make test
    ```
    
-## Possible problem:
+### Possible problem:
 exec ./entrypoint.sh: no such file or directory
-## Solution:
+### Solution:
 Recreate entrypoint.sh at the same place with the same content.
 
 ## Key External Projects or Frameworks Used
